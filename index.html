@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 ng-app"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 ng-app"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9 ng-app"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" ng-app> <!--<![endif]-->
   <head>
@@ -18,28 +17,28 @@
         <div class="row-fluid text-center">
             <h1>Github Repo Search</h1>
             <p>Type in your search query and see what happens!</p>
-            <form class="form-search" ng-submit="loadGit()">
+            <form class="form-search" ng-submit="loadGit(username)">
 		<div class="input-append">
-                <input type="text" class="input-medium search-query" placeholder="Search term..." ng-model="username">
+                <input type="text" class="input-medium search-query" placeholder="Search term..." ng-model="username" autofocus>
                 <input type="submit" class="btn" value="Search">
 		</div>
             </form>
         </div>
     </div>
       </div>
-    <div class="container">
+    <div class="container" ng-show="repos">
         <div class="row-fluid">
 		<div class="span6 offset3">
 			<form>
-           			<input type="text" class="input-block-level" placeholder="filter" ng-model="filterVar"> 
+           			<input type="text" class="input-block-level" placeholder="filter" ng-model="filterVar" id="filter-input"> 
         		</form>
 		</div>
 	</div>
 	<hr />	
 	<div class="row-fluid">
 		<div class="span6 offset3">
-		<table class="table-striped table-bordered table">
-			<tr ng-repeat="repo in repos">
+		<table class="table-striped table-bordered table" id="results">
+			<tr ng-repeat="repo in repos | filter: filterVar | orderBy: '-open_issues'">
 				<td><h5>{{repo.name}}<small class="badge pull-right">open issues {{repo.open_issues}}</small></h5><p>Last updated at: {{repo.updated_at}}</p></td>
 			</tr>
 		</table>

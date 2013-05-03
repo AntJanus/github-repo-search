@@ -1,23 +1,22 @@
+
 function mainCtrl($scope){
 	//load github
 	//execute upon hitting "search"
-	$scope.loadGit = function(){
-		var request ={
-			'sort': 'updated',
-			'direction': 'desc'
-		}
+	$scope.loadGit = function(username){
 		$.ajax({
 			type:'GET',
-			url: 'https://api.github.com/users/'+$scope.username+'/repos',
+			url: 'https://api.github.com/users/'+username+'/repos',
 			success: function(data){
 				$scope.repos = data;
-				return;
+				$scope.username = username;
+				//headache fixer below
+				$scope.$apply();
 			}
 		});
 	}
 	//default empty (no pre-execution)
 	$scope.username = '';
 	$scope.filterVar = '';
-	$scope.repos = [];
+	$scope.repos;
 	
 }
