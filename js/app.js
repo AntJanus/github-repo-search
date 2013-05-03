@@ -1,3 +1,8 @@
+angular.module('gitApp', []).filter('fromNow', function() {
+  return function(date) {
+    return moment(date).fromNow();
+  }
+});
 
 function mainCtrl($scope){
 	//load github
@@ -9,7 +14,7 @@ function mainCtrl($scope){
 			success: function(data){
 				$scope.repos = data;
 				$scope.username = username;
-				//headache fixer below
+				//this is what happens when you use jQuery kids, be careful
 				$scope.$apply();
 			}
 		});
