@@ -10,17 +10,17 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+	<script src="js/app.js"></script>
   </head>
-  <body>
-    <!-- CODE TEST: MARKUP GOES HERE -->
+  <body ng-controller="mainCtrl">
     <div class="hero-unit">
     <div class="container">
         <div class="row-fluid text-center">
             <h1>Github Repo Search</h1>
             <p>Type in your search query and see what happens!</p>
-            <form class="form-search">
+            <form class="form-search" ng-submit="loadGit()">
 		<div class="input-append">
-                <input type="text" class="input-medium search-query" placeholder="Search term..." ng-model="query">
+                <input type="text" class="input-medium search-query" placeholder="Search term..." ng-model="username">
                 <input type="submit" class="btn" value="Search">
 		</div>
             </form>
@@ -31,7 +31,7 @@
         <div class="row-fluid">
 		<div class="span6 offset3">
 			<form>
-           			<input type="text" class="input-block-level" placeholder="filter" ng-model="filter"> 
+           			<input type="text" class="input-block-level" placeholder="filter" ng-model="filterVar"> 
         		</form>
 		</div>
 	</div>
@@ -39,8 +39,8 @@
 	<div class="row-fluid">
 		<div class="span6 offset3">
 		<table class="table-striped table-bordered table">
-			<tr>
-				<td><h5>Repo Name<small class="badge pull-right">open issues</small></h5><p>Last updated at...</p></td>
+			<tr ng-repeat="repo in repos">
+				<td><h5>{{repo.name}}<small class="badge pull-right">open issues {{repo.open_issues}}</small></h5><p>Last updated at: {{repo.updated_at}}</p></td>
 			</tr>
 		</table>
 		</div>
