@@ -1,11 +1,48 @@
 #masthead{
-background: #deefff; /* Old browsers */
-background: -moz-linear-gradient(top,  #deefff 0%, #98bede 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#deefff), color-stop(100%,#98bede)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #deefff 0%,#98bede 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #deefff 0%,#98bede 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #deefff 0%,#98bede 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #deefff 0%,#98bede 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); /* IE6-9 */
+    background: #deefff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #deefff 0%, #98bede 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#deefff), color-stop(100%,#98bede)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #deefff 0%,#98bede 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #deefff 0%,#98bede 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #deefff 0%,#98bede 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #deefff 0%,#98bede 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 ); /* IE6-9 */
+}
 
+
+
+.repo-enter-setup, .repo-leave-setup, .repo-move-setup{
+    -webkit-transition:1s linear all;
+    -moz-transition:1s linear all;
+    -o-transition:1s linear all;
+    transition:1s linear all; 
+    position:relative;
+}
+
+.repo-enter-setup{
+    opacity: 0;
+    left: -10px;
+}
+
+.repo-enter-setup.repo-enter-start{
+    opacity: 1;
+    left: 0;
+}
+
+.repo-leave-setup{
+    left: 0;
+    opacity: 1;
+}
+
+.repo-leave-setup.repo-leave-start{
+    left: -10px;
+    opacity: 0;
+}
+
+.repo-move-setup{
+    opacity: 0.5;
+}
+
+.repo-move-setup.repo-move-start{
+    opacity: 1;
 }
