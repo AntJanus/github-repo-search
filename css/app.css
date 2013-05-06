@@ -12,10 +12,10 @@
 
 
 .repo-enter-setup, .repo-leave-setup, .repo-move-setup{
-    -webkit-transition:1s linear all;
-    -moz-transition:1s linear all;
-    -o-transition:1s linear all;
-    transition:1s linear all; 
+    -webkit-transition:1s ease-out all;
+    -moz-transition:1s ease-out all;
+    -o-transition:1s ease-out all;
+    transition:1s ease-out all; 
     position:relative;
 }
 
